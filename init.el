@@ -1,4 +1,17 @@
 (require 'package)
+
+
+;; Haskell
+
+(eval-after-load "haskell-mode"
+  '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
+
+
+(setq haskell-compile-cabal-build-command "stack build")
+(setq-default show-trailing-whitespace t)
+(setq-default haskell-tags-on-save t)
+
+
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
@@ -21,10 +34,32 @@ There are two things you can do about this warning:
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (lsp-haskell))))
+ '(custom-enabled-themes (quote (wombat)))
+ '(haskell-stylish-on-save t)
+ '(package-selected-packages (quote (dhall-mode git-gutter magit lsp-haskell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; disable the menu bar
+(menu-bar-mode -1)
+;; disable the scrollbar
+(toggle-scroll-bar -1)
+;; disable the toolbar
+(tool-bar-mode -1)
+
+;; magit
+(global-set-key (kbd "C-x g") 'magit-status)
+
+;; gutter
+(global-git-gutter-mode +1)
+
+
+;; Org-mode
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-switchb)
