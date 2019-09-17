@@ -1,6 +1,7 @@
 (require 'package)
 
 (global-set-key "\C-z" 'undo)
+(setq-default column-number-mode t)
 
 ;; multiple-cursors
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
