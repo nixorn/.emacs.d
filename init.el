@@ -1,5 +1,8 @@
 (require 'package)
 
+(require 'multiple-cursors)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 
 ;; Haskell
 
@@ -36,7 +39,9 @@ There are two things you can do about this warning:
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (wombat)))
  '(haskell-stylish-on-save t)
- '(package-selected-packages (quote (dhall-mode git-gutter magit lsp-haskell))))
+ '(package-selected-packages
+   (quote
+    (multiple-cursors dhall-mode git-gutter magit lsp-haskell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
