@@ -2,4 +2,6 @@ auto-save-list
 *~
 tramp
 session.*
+.mc-lists.el
 bookmarks
+elpa/gnupg

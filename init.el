@@ -1,6 +1,8 @@
 (require 'package)
 
-(require 'multiple-cursors)
+(global-set-key "\C-z" 'undo)
+
+;; multiple-cursors
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 
