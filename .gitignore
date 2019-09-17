@@ -5,3 +5,4 @@ session.*
 .mc-lists.el
 bookmarks
 elpa/gnupg
+transient/history.el

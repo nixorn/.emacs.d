@@ -21,7 +21,6 @@
 (setq-default show-trailing-whitespace t)
 (setq-default haskell-tags-on-save t)
 
-
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
