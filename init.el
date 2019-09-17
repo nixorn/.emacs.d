@@ -1,7 +1,11 @@
+;; General settings
+
 (require 'package)
 
 (global-set-key "\C-z" 'undo)
 (setq-default column-number-mode t)
+
+(show-paren-mode t)
 
 ;; multiple-cursors
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
