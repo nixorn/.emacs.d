@@ -47,7 +47,15 @@ There are two things you can do about this warning:
  '(haskell-stylish-on-save t)
  '(package-selected-packages
    (quote
-    (multiple-cursors dhall-mode git-gutter magit lsp-haskell))))
+    (multiple-cursors dhall-mode git-gutter magit lsp-haskell)))
+ '(sql-connection-alist
+   (quote
+    (("local"
+      (sql-product
+       (quote postgres))
+      (sql-user "nixorn")
+      (sql-database "getshoptv_source")
+      (sql-server "localhost"))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -74,3 +82,4 @@ There are two things you can do about this warning:
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-switchb)
+(put 'upcase-region 'disabled nil)
