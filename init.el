@@ -7,7 +7,6 @@
 (global-set-key "\C-z" 'undo)
 (global-set-key (kbd "C-M-x C-M-f") 'find-file-at-point)
 (setq-default column-number-mode t)
-
 (show-paren-mode t)
 
 
@@ -56,10 +55,6 @@ There are two things you can do about this warning:
     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
-
-
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -67,6 +62,7 @@ There are two things you can do about this warning:
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (wombat)))
  '(dhall-format-at-save nil)
+ '(haskell-process-type (quote stack-ghci))
  '(haskell-stylish-on-save t)
  '(indent-tabs-mode nil)
  '(package-selected-packages
@@ -92,8 +88,6 @@ There are two things you can do about this warning:
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-
 
 ;; disable the menu bar
 (menu-bar-mode -1)
