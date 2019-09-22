@@ -116,3 +116,10 @@ There are two things you can do about this warning:
 (global-set-key "\C-cb" 'org-switchb)
 (put 'upcase-region 'disabled nil)
 (require 'ox-md)
+
+
+;; Dhall
+(add-hook 'dhall-mode-hook
+      (lambda ()
+        (make-local-variable 'indent-tabs-mode)
+				(setq indent-tabs-mode nil)))
