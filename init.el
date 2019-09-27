@@ -67,7 +67,7 @@ There are two things you can do about this warning:
  '(indent-tabs-mode nil)
  '(package-selected-packages
    (quote
-    (web-beautify multiple-cursors dhall-mode git-gutter magit lsp-haskell)))
+    (paredit web-beautify multiple-cursors dhall-mode git-gutter magit lsp-haskell)))
  '(sql-connection-alist
    (quote
     (("local"
@@ -77,10 +77,6 @@ There are two things you can do about this warning:
       (sql-database "getshoptv_source")
       (sql-server "localhost")))))
  '(tab-width 2))
-
-
-
-
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -117,3 +113,12 @@ There are two things you can do about this warning:
       (lambda ()
         (make-local-variable 'indent-tabs-mode)
 				(setq indent-tabs-mode nil)))
+
+
+;; Paredit
+
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'dhall-mode-hook       #'enable-paredit-mode)
+(add-hook 'haskell-mode-hook       #'enable-paredit-mode)
