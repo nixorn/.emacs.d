@@ -122,3 +122,4 @@ There are two things you can do about this warning:
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 (add-hook 'dhall-mode-hook       #'enable-paredit-mode)
 (add-hook 'haskell-mode-hook       #'enable-paredit-mode)
+(global-set-key "{" 'paredit-open-curly)
