@@ -5,6 +5,8 @@
 (require 'macros)
 
 (global-set-key "\C-z" 'undo)
+(global-set-key (kbd "M-g") 'rgrep)
+(global-set-key (kbd "C-M-?") 'xref-find-references)
 (global-set-key (kbd "C-M-x C-M-f") 'find-file-at-point)
 (setq-default column-number-mode t)
 (show-paren-mode t)
@@ -62,6 +64,7 @@ There are two things you can do about this warning:
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (wombat)))
  '(dhall-format-at-save nil)
+ '(dhall-type-check-inactivity-timeout 5)
  '(haskell-process-type (quote stack-ghci))
  '(haskell-stylish-on-save t)
  '(indent-tabs-mode nil)
@@ -122,4 +125,21 @@ There are two things you can do about this warning:
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 (add-hook 'dhall-mode-hook       #'enable-paredit-mode)
 (add-hook 'haskell-mode-hook       #'enable-paredit-mode)
+(add-hook 'python-mode-hook       #'enable-paredit-mode)
 (global-set-key "{" 'paredit-open-curly)
+
+
+;; SQL beytify
+
+(defun sql-beautify-region (beg end)
+  "Beautify SQL in region between beg and END."
+  (interactive "r")
+  (save-excursion
+    (shell-command-on-region beg end "anbt-sql-formatter" nil t)))
+    ;; change sqlbeautify to anbt-sql-formatter if you
+    ;;ended up using the ruby gem
+
+(defun sql-beautify-buffer ()
+ "Beautify SQL in buffer."
+ (interactive)
+ (sql-beautify-region (point-min) (point-max)))
