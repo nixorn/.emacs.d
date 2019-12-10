@@ -11,7 +11,6 @@
 (setq-default column-number-mode t)
 (show-paren-mode t)
 
-
 (defun replace-last-sexp ()
     (interactive)
     (let ((value (eval (preceding-sexp))))
@@ -31,7 +30,9 @@
 (eval-after-load "haskell-mode"
   '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
 
+(add-hook 'haskell-mode-hook #'haskell-collapse-mode)
 
+(global-set-key "\C-t" 'haskell-hide-toggle)
 (setq haskell-compile-cabal-build-command "stack install --test --pedantic")
 (setq-default show-trailing-whitespace t)
 (setq-default haskell-tags-on-save t)
@@ -70,7 +71,7 @@ There are two things you can do about this warning:
  '(indent-tabs-mode nil)
  '(package-selected-packages
    (quote
-    (paredit web-beautify multiple-cursors dhall-mode git-gutter magit lsp-haskell)))
+    (typescript-mode paredit web-beautify multiple-cursors dhall-mode git-gutter magit lsp-haskell)))
  '(sql-connection-alist
    (quote
     (("local"
@@ -79,7 +80,8 @@ There are two things you can do about this warning:
       (sql-user "nixorn")
       (sql-database "getshoptv_source")
       (sql-server "localhost")))))
- '(tab-width 2))
+ '(tab-width 2)
+ '(typescript-indent-level 2))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -143,3 +145,4 @@ There are two things you can do about this warning:
  "Beautify SQL in buffer."
  (interactive)
  (sql-beautify-region (point-min) (point-max)))
+(put 'downcase-region 'disabled nil)
