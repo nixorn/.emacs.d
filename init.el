@@ -81,7 +81,8 @@ There are two things you can do about this warning:
       (sql-database "getshoptv_source")
       (sql-server "localhost")))))
  '(tab-width 2)
- '(typescript-indent-level 2))
+ '(typescript-indent-level 2)
+ '(version-control (quote never)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
