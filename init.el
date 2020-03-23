@@ -65,7 +65,7 @@ There are two things you can do about this warning:
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (wombat)))
  '(dhall-format-at-save nil)
- '(dhall-type-check-inactivity-timeout 5)
+ '(dhall-type-check-inactivity-timeout 5000)
  '(haskell-process-type (quote stack-ghci))
  '(haskell-stylish-on-save t)
  '(indent-tabs-mode nil)
