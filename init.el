@@ -138,7 +138,7 @@ There are two things you can do about this warning:
   "Beautify SQL in region between beg and END."
   (interactive "r")
   (save-excursion
-    (shell-command-on-region beg end "anbt-sql-formatter" nil t)))
+    (shell-command-on-region beg end "pg_format" nil t)))
     ;; change sqlbeautify to anbt-sql-formatter if you
     ;;ended up using the ruby gem
 
@@ -147,3 +147,7 @@ There are two things you can do about this warning:
  (interactive)
  (sql-beautify-region (point-min) (point-max)))
 (put 'downcase-region 'disabled nil)
+
+;; split windows side-by-side
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
