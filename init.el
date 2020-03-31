@@ -6,6 +6,8 @@
 
 (global-set-key "\C-z" 'undo)
 (global-set-key (kbd "M-g") 'rgrep)
+(global-set-key (kbd "\C-x i") 'previous-multiframe-window)
+(setq tramp-default-method "ssh")
 (global-set-key (kbd "C-M-?") 'xref-find-references)
 (global-set-key (kbd "C-M-x C-M-f") 'find-file-at-point)
 (setq-default column-number-mode t)
@@ -150,4 +152,4 @@ There are two things you can do about this warning:
 
 ;; split windows side-by-side
 (setq split-height-threshold nil)
-(setq split-width-threshold 0)
+(setq split-width-threshold 70)
