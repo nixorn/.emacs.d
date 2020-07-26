@@ -33,9 +33,12 @@
   '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
 
 (add-hook 'haskell-mode-hook #'haskell-collapse-mode)
+(add-hook 'rust-mode-hook #'cargo-minor-mode)
 
 (global-set-key "\C-t" 'haskell-hide-toggle)
-(setq haskell-compile-cabal-build-command "stack install --test --pedantic")
+(setq haskell-compile-cabal-build-command "stack install --test")
+;; (setq haskell-compile-cabal-build-command "nix-shell --command 'cabal build' --attr env release.nix")
+;; (setq haskell-compile-cabal-build-command "NIXPKGS_ALLOW_BROKEN=1 nix-build")
 (setq-default show-trailing-whitespace t)
 (setq-default haskell-tags-on-save t)
 (setq-default tags-revert-without-query t)
@@ -73,7 +76,7 @@ There are two things you can do about this warning:
  '(indent-tabs-mode nil)
  '(package-selected-packages
    (quote
-    (typescript-mode paredit web-beautify multiple-cursors dhall-mode git-gutter magit lsp-haskell)))
+    (cargo php-mode typescript-mode paredit web-beautify multiple-cursors dhall-mode git-gutter magit lsp-haskell)))
  '(sql-connection-alist
    (quote
     (("local"
@@ -91,7 +94,7 @@ There are two things you can do about this warning:
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "#f6f3e8" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "PfEd" :family "DejaVu Sans Mono")))))
 
 ;; disable the menu bar
 (menu-bar-mode -1)
@@ -130,6 +133,7 @@ There are two things you can do about this warning:
 (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
 (add-hook 'dhall-mode-hook       #'enable-paredit-mode)
 (add-hook 'haskell-mode-hook       #'enable-paredit-mode)
+(add-hook 'rust-mode-hook       #'enable-paredit-mode)
 (add-hook 'python-mode-hook       #'enable-paredit-mode)
 (global-set-key "{" 'paredit-open-curly)
 
