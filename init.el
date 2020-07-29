@@ -10,6 +10,8 @@
 (setq tramp-default-method "ssh")
 (global-set-key (kbd "C-M-?") 'xref-find-references)
 (global-set-key (kbd "C-M-x C-M-f") 'find-file-at-point)
+(global-set-key (kbd "<C-mouse-4>") 'text-scale-increase)
+(global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
 (setq-default column-number-mode t)
 (show-paren-mode t)
 
