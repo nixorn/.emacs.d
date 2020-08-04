@@ -79,6 +79,7 @@ There are two things you can do about this warning:
  '(package-selected-packages
    (quote
     (cargo php-mode typescript-mode paredit web-beautify multiple-cursors dhall-mode git-gutter magit lsp-haskell)))
+ '(require-final-newline t)
  '(sql-connection-alist
    (quote
     (("local"
