@@ -8,12 +8,18 @@
 
 (setq make-backup-files nil)
 
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")))
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+(fset 'format-stack-errors
+   (kmacro-lambda-form [?\M-x ?r ?e ?a ?d ?- ?o ?b ?l backspace backspace ?n ?l tab return ?\M-x ?r ?e ?p ?l ?a ?c ?e ?- ?r ?e ?g tab return ?^ ?\[ ?^ ?> ?\] ?+ ?> ?  return return escape ?< tab return] 0 "%d"))
+
 
 ;;;;;;;;;;; RUST
 ;;;; see https://robert.kra.hn/posts/2021-02-07_rust-with-emacs/
@@ -191,13 +197,13 @@
 
 ;; Haskell
 
-(eval-after-load "haskell-mode"
-  '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
 
-(setq haskell-compile-cabal-build-command "stack install --pedantic")
-;; (setq haskell-compile-cabal-build-command "stack install --ghc-options=\"-O0\" --pedantic")
-;; (setq haskell-compile-cabal-build-command "nix-shell --command 'cabal build' --attr env release.nix")
-;; (setq haskell-compile-cabal-build-command "NIXPKGS_ALLOW_BROKEN=1 nix-build")
+(eval-after-load "haskell-mode"  '(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile))
+
+; (setq haskell-compile-cabal-build-command "stack install --pedantic")
+(setq haskell-compile-cabal-build-command "stack install --ghc-options=\"-O0\" --pedantic")
+; (setq haskell-compile-cabal-build-command "nix-shell --command 'cabal build' --attr env release.nix")
+; (setq haskell-compile-cabal-build-command "NIXPKGS_ALLOW_BROKEN=1 nix-build")
 (setq-default show-trailing-whitespace t)
 (setq-default haskell-tags-on-save t)
 (setq-default tags-revert-without-query t)
@@ -234,16 +240,9 @@ There are two things you can do about this warning:
  '(haskell-stylish-on-save t)
  '(indent-tabs-mode nil)
  '(js-indent-level 2)
- '(lsp-haskell-formatting-provider "stylish-haskell")
  '(package-selected-packages
-   '(csv-mode tide company flycheck-haskell lsp-ui lsp-mode yaml-mode php-mode typescript-mode paredit web-beautify multiple-cursors dhall-mode git-gutter magit lsp-haskell))
+   '(flycheck yasnippet yaml-mode web-beautify use-package toml-mode tide rustic php-mode paredit multiple-cursors magit lsp-ui lsp-haskell git-gutter flycheck-haskell exec-path-from-shell dhall-mode csv-mode company))
  '(require-final-newline t)
- '(sql-connection-alist
-   '(("local"
-      (sql-product 'postgres)
-      (sql-user "nixorn")
-      (sql-database "getshoptv_source")
-      (sql-server "localhost"))))
  '(tab-width 2)
  '(typescript-indent-level 2)
  '(version-control 'never))
@@ -311,17 +310,6 @@ There are two things you can do about this warning:
  (interactive)
  (sql-beautify-region (point-min) (point-max)))
 (put 'downcase-region 'disabled nil)
-
-;; split windows side-by-side
-(setq split-height-threshold nil)
-(setq split-width-threshold 70)
-
-
-;; kdb macros
-
-(fset 'format-stack-errors
-   [?\M-x ?r ?e ?a ?d ?- ?o ?n ?l ?y ?- ?m ?o ?d ?e return ?\M-x ?r ?e ?p ?l ?a ?c ?s backspace ?e ?- ?r ?e tab ?g tab return ?\[ ?a ?- ?z ?\] ?* ?> ?  return return escape ?< tab return])
-
 
 
 
